@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="mb-4">最新文章</h2>
+    {% for post in posts %}
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h3 class="h5"><a href="{{ url_for('post', post_id=post['id']) }}" class="text-decoration-none text-dark">{{ post['title'] }}</a></h3>
+                <p class="text-muted small mb-0">{{ post['created_at'] }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
