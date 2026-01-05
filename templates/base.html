@@ -2,23 +2,68 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>极简博客</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; font-family: sans-serif; }
+        /* 整体背景与字体优化 */
+        body { 
+            background-color: #f8f9fa; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* 确保页脚始终在底部 */
+        }
+        
+        .container { flex: 1; } /* 自动撑开中间内容区域 */
+
         .card { border: none; border-radius: 12px; transition: 0.2s; }
         .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        /* 页脚样式 */
+        footer {
+            color: #adb5bd;
+            font-size: 0.85rem;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .flask-logo {
+            color: #495057;
+            font-weight: 600;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-white shadow-sm mb-4">
+    <nav class="navbar navbar-light bg-white shadow-sm mb-5">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">米斯特王blog</a>
-            <a href="{{ url_for('create') }}" class="btn btn-primary btn-sm rounded-pill">写文章</a>
+            <a class="navbar-brand fw-bold text-dark" href="{{ url_for('index') }}">
+                <span class="text-primary">#</span> 米斯特王blog
+            </a>
+            <a href="{{ url_for('create') }}" class="btn btn-primary btn-sm rounded-pill px-3">写文章</a>
         </div>
     </nav>
-    <div class="container"><div class="row justify-content-center"><div class="col-md-8">
-        {% block content %}{% endblock %}
-    </div></div></div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-11"> {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <hr class="w-25 mx-auto mb-4" style="opacity: 0.1;">
+            <p>
+                Powered by 
+                <a href="https://flask.palletsprojects.com/" class="flask-logo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cpu-fill me-1" viewBox="0 0 16 16">
+                        <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                        <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
+                    </svg>Flask
+                </a> 
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="bg-white p-4 shadow-sm rounded">
-        <h3>发布新文章</h3>
+    <div class="bg-white p-4 shadow-sm rounded-4">
+        <h3 class="fw-bold mb-4">发布新文章</h3>
         <form method="post">
             <div class="mb-3">
-                <label class="form-label">标题</label>
-                <input type="text" name="title" class="form-control" required>
+                <label class="form-label fw-bold">标题</label>
+                <input type="text" name="title" class="form-control" placeholder="输入文章标题" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">正文</label>
-                <textarea name="content" class="form-control" rows="10" required></textarea>
+                <label class="form-label fw-bold">正文</label>
+                <textarea name="content" class="form-control" rows="10" placeholder="写点什么..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary w-100">立即发布</button>
+            <div class="mb-4">
+                <label class="form-label fw-bold text-danger">管理密码</label>
+                <input type="password" name="password" class="form-control" placeholder="请输入操作密码" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">立即发布</button>
         </form>
     </div>
 {% endblock %}

@@ -8,9 +8,20 @@
         <hr class="my-5">
         <div class="d-flex justify-content-between">
             <a href="{{ url_for('index') }}" class="btn btn-light border">返回列表</a>
-            <form action="{{ url_for('delete', post_id=post['id']) }}" method="POST">
-                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('确定删除吗？')">删除文章</button>
-            </form>
+            <form id="delete-form" action="{{ url_for('delete', post_id=post['id']) }}" method="POST">
+    <input type="hidden" name="password" id="confirm-password">
+    <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirmDelete()">删除文章</button>
+</form>
+
+<script>
+function confirmDelete() {
+    let pwd = prompt("请输入管理密码以确认删除：");
+    if (pwd) {
+        document.getElementById('confirm-password').value = pwd;
+        document.getElementById('delete-form').submit();
+    }
+}
+</script>
         </div>
     </div>
 {% endblock %}
